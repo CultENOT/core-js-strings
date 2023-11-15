@@ -252,8 +252,9 @@ function formatTime(/* minutes, seconds */) {
  *   reverseString('abcdef') => 'fedcba'
  *   reverseString('12345') => '54321'
  */
-function reverseString(/* str */) {
-  throw new Error('Not implemented');
+function reverseString(str) {
+  const res = str.split('').reverse().join('');
+  return res;
 }
 
 /**
@@ -267,8 +268,9 @@ function reverseString(/* str */) {
  *   orderAlphabetically('textbook') => 'bekoottx'
  *   orderAlphabetically('abc123xyz') => '123abcxyz'
  */
-function orderAlphabetically(/* str */) {
-  throw new Error('Not implemented');
+function orderAlphabetically(str) {
+  const res = str.split('').sort().join('');
+  return res;
 }
 
 /**
@@ -283,8 +285,8 @@ function orderAlphabetically(/* str */) {
  *   containsSubstring('JavaScript is Fun', 'Python') => false
  *   containsSubstring('12345', '34') => true
  */
-function containsSubstring(/* str, substring */) {
-  throw new Error('Not implemented');
+function containsSubstring(str, substring) {
+  return str.includes(substring);
 }
 
 /**
@@ -301,8 +303,11 @@ function containsSubstring(/* str, substring */) {
  *   countVowels('aEiOu') => 5
  *   countVowels('XYZ') => 1
  */
-function countVowels(/* str */) {
-  throw new Error('Not implemented');
+function countVowels(str) {
+  const vowels = ['a', 'e', 'i', 'o', 'u', 'y', 'A', 'E', 'I', 'O', 'U', 'Y'];
+  const myStr = str.split('');
+  const res = myStr.filter((elem) => vowels.includes(elem)).length;
+  return res;
 }
 
 /**
@@ -318,8 +323,23 @@ function countVowels(/* str */) {
  *   isPalindrome('apple') => false
  *   isPalindrome('No lemon, no melon') => true
  */
-function isPalindrome(/* str */) {
-  throw new Error('Not implemented');
+function isPalindrome(str) {
+  const arrOfPunctuationMarks = [',', '.', '!', '?'];
+  const reverseStr = str
+    .split('')
+    .reverse()
+    .filter((elem) => !arrOfPunctuationMarks.includes(elem))
+    .join('')
+    .replace(/\s/g, '')
+    .toLocaleLowerCase();
+  const preparedStr = str
+    .split('')
+    .filter((elem) => !arrOfPunctuationMarks.includes(elem))
+    .join('')
+    .replace(/\s/g, '')
+    .toLocaleLowerCase();
+  if (preparedStr === reverseStr) return true;
+  return false;
 }
 
 /**
