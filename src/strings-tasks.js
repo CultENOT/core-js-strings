@@ -19,8 +19,11 @@
  *   getStringLength(null) => 0
  *   getStringLength(undefined) => 0
  */
-function getStringLength(/* value */) {
-  throw new Error('Not implemented');
+function getStringLength(value) {
+  if (typeof value === 'string' || value instanceof String) {
+    return value.length;
+  }
+  return 0;
 }
 
 /**
@@ -239,6 +242,8 @@ function endsWith(str, substr) {
  *   formatTime(0, 0) => "00:00"
  */
 function formatTime(/* minutes, seconds */) {
+  // const time = '00:00';
+  // return time.padStart(minutes) + seconds;
   throw new Error('Not implemented');
 }
 
@@ -355,6 +360,17 @@ function isPalindrome(str) {
  *   findLongestWord('No words here') => 'words'
  */
 function findLongestWord(/* sentence */) {
+  // const arr = sentence.split(/\s/);
+  // let theLargestWord = ' ';
+  // for (let i = 0; i < arr.length - 1; i += 1) {
+  //   if (
+  //     arr[i].length >= arr[i + 1].length ||
+  //     arr[i].length !== arr[i + 1].length
+  //   ) {
+  //     theLargestWord = arr[i];
+  //   }
+  // }
+  // return theLargestWord;
   throw new Error('Not implemented');
 }
 
@@ -368,8 +384,18 @@ function findLongestWord(/* sentence */) {
  *   reverseWords('Hello World') => 'olleH dlroW'
  *   reverseWords('The Quick Brown Fox') => 'ehT kciuQ nworB xoF'
  */
-function reverseWords(/* str */) {
-  throw new Error('Not implemented');
+function reverseWords(str) {
+  let reversedStr = '';
+  const mystr = str.split(/\s/);
+  const res = [];
+  for (let k = 0; k < mystr.length; k += 1) {
+    for (let i = 0; i < mystr[k].length; i += 1) {
+      reversedStr = mystr[k][i] + reversedStr;
+    }
+    res.push(reversedStr);
+    reversedStr = '';
+  }
+  return res.join(' ');
 }
 
 /**
@@ -400,8 +426,8 @@ function invertCase(/* str */) {
  *   getStringFromTemplate('John','Doe') => 'Hello, John Doe!'
  *   getStringFromTemplate('Chuck','Norris') => 'Hello, Chuck Norris!'
  */
-function getStringFromTemplate(/* firstName, lastName */) {
-  throw new Error('Not implemented');
+function getStringFromTemplate(firstName, lastName) {
+  return `Hello, ${firstName} ${lastName}!`;
 }
 
 /**
@@ -414,8 +440,8 @@ function getStringFromTemplate(/* firstName, lastName */) {
  *   extractNameFromTemplate('Hello, John Doe!') => 'John Doe'
  *   extractNameFromTemplate('Hello, Chuck Norris!') => 'Chuck Norris'
  */
-function extractNameFromTemplate(/* value */) {
-  throw new Error('Not implemented');
+function extractNameFromTemplate(value) {
+  return value.slice(7, -1);
 }
 
 /**
@@ -429,8 +455,8 @@ function extractNameFromTemplate(/* value */) {
  *   unbracketTag('<span>') => 'span'
  *   unbracketTag('<a>') => 'a'
  */
-function unbracketTag(/* str */) {
-  throw new Error('Not implemented');
+function unbracketTag(str) {
+  return str.slice(1, -1);
 }
 
 /**
@@ -448,8 +474,8 @@ function unbracketTag(/* str */) {
  *   ],
  *   'info@gmail.com' => ['info@gmail.com']
  */
-function extractEmails(/* str */) {
-  throw new Error('Not implemented');
+function extractEmails(str) {
+  return str.split(';');
 }
 
 /**
@@ -469,6 +495,16 @@ function extractEmails(/* str */) {
  *
  */
 function encodeToRot13(/* str */) {
+  // const lowLetters = [a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z];
+  // const upLetters = [A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z]
+  // const myStr = str.split('');
+  // const res = []
+  // let completedWord = ''
+  // for (let i = 0; i < myStr.length; i += 1) {
+  //   for (let k = 0; k < myStr[k].length; k += 1) {
+  //     completedWord += lowLetters[myStr[k].indexOf()]
+  //   }
+  // }
   throw new Error('Not implemented');
 }
 
@@ -496,8 +532,62 @@ function encodeToRot13(/* str */) {
  *   'Q♠' => 50
  *   'K♠' => 51
  */
-function getCardId(/* value */) {
-  throw new Error('Not implemented');
+function getCardId(value) {
+  const cardPattern = [
+    'A♣',
+    '2♣',
+    '3♣',
+    '4♣',
+    '5♣',
+    '6♣',
+    '7♣',
+    '8♣',
+    '9♣',
+    '10♣',
+    'J♣',
+    'Q♣',
+    'K♣',
+    'A♦',
+    '2♦',
+    '3♦',
+    '4♦',
+    '5♦',
+    '6♦',
+    '7♦',
+    '8♦',
+    '9♦',
+    '10♦',
+    'J♦',
+    'Q♦',
+    'K♦',
+    'A♥',
+    '2♥',
+    '3♥',
+    '4♥',
+    '5♥',
+    '6♥',
+    '7♥',
+    '8♥',
+    '9♥',
+    '10♥',
+    'J♥',
+    'Q♥',
+    'K♥',
+    'A♠',
+    '2♠',
+    '3♠',
+    '4♠',
+    '5♠',
+    '6♠',
+    '7♠',
+    '8♠',
+    '9♠',
+    '10♠',
+    'J♠',
+    'Q♠',
+    'K♠',
+  ];
+  return cardPattern.indexOf(value);
 }
 
 module.exports = {
